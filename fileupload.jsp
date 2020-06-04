@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Upload Testing</title>
+        <title>Upload Files</title>
     </head>
     <body>
         <h1>Upload a file:</h1>
