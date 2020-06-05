@@ -18,23 +18,15 @@ public class DownloadDirectoryServ extends HttpServlet{
     throws ServletException, IOException{
         PrintWriter out = res.getWriter();
         String str = req.getParameter("path") + "/../webapps/uploadDirectory/";
-        out.println("<p>" + str + "</p>");
-        /*File dlDir = new File(str);
-        String[] files = dlDir.list();
-        if(files == null){
-            System.out.println("The length of files is 0");
-            return;
-        }
-        for(int i = 0; i < files.length; i++){
-            out.println("<p>" + files[i] + "</p>");
-        }*/
         File dlDir = new File("../webapps/uploadDirectory/");
         String[] files = dlDir.list();
         if(files == null)
             return;
         for(int i = 0; i < files.length; i++){
+            if(files[i].compareTo("archive") == 0)
+                continue;
             if(hasPreviousVersions(files[i])){
-                out.println("<p>This file has archived versions:</p>");
+                out.println("<p>Note: the following file has archived versions. Click <a href=\"archive.jsp\">here<a/> to view archive.</p>");
             }
             out.println("<ul><a href=\"download?filename=" + files[i] + "&filepath=../webapps/uploadDirectory/\">" + files[i] + "</a></ul>");
         }

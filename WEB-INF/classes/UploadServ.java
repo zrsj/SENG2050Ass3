@@ -34,7 +34,12 @@ public class UploadServ extends HttpServlet{
         else{
             String archiveName = System.currentTimeMillis() + fileName;
             //renameAndMove(save.toPath(), saveExisting.toPath(), archiveName);
-            renameAndMove(uploadDir.toPath(), archive.toPath(), fileName, archiveName);
+            try{
+                renameAndMove(uploadDir.toPath(), archive.toPath(), fileName, archiveName);
+            }
+            catch(NoSuchFileException e){
+                res.sendRedirect("fileupload.jsp");
+            }
             Files.copy(fileContent, save.toPath(), StandardCopyOption.REPLACE_EXISTING);
         }
         try{
