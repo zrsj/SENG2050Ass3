@@ -8,6 +8,7 @@
     <body>
         <c:set var="usernameError" value="${sessionScope.usernameError}" />
         <c:set var="passwordError" value="${sessionScope.passwordError}" />
+        <c:set var="roleError" value="${sessionScope.roleError}" />
         <h1>Sign Up</h1>
         <p>Welcome to ZIR!</p>
         <form action="addNewUserServlet" method="POST">
@@ -45,6 +46,11 @@
                 <input type="radio" name="role" value="manager">
                 <label for="manager">Manager</label>
             </p>
+            <p>
+                <c:if test = "${roleError == 'roleNotSelected'}">
+                        Error: No role has been selected.
+                </c:if>
+                </p>
             <input type="submit" value="Sign Up"/>
         </form>
     </body>

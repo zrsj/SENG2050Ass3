@@ -2,23 +2,38 @@ package servlets;
 
 import java.util.Date;
 
-import servlets.MilestoneBean;
-
 public class ProjectBean
 {
     private String title;
     private String description;
-    private String status;
+    //private double status;
     private Date dateDue;
-    private MilestoneBean[] milestones;
+    //private MilestoneBean[] milestones;
 
-    public ProjectBean(String title, String description, String status, Date date, MilestoneBean[] milestones)
+    public ProjectBean()
+    {
+        this.title = null;
+        this.description = null;
+        //this.status = 0;
+        this.dateDue = null;
+        //this.milestones = null;
+    }
+
+    public ProjectBean(String title, String description, double status, Date date)
     {
         this.title = title;
         this.description = description;
-        this.status = status;
+        //this.status = status;
         this.dateDue = date;
-        this.milestones = milestones;
+        //this.milestones = milestones;
+    }
+
+    public ProjectBean(String title, String description, Date date)
+    {
+        this.title = title;
+        this.description = description;
+        //this.status = calculateProgress();
+        this.dateDue = date;
     }
 
     public void setTitle(String title)
@@ -41,6 +56,7 @@ public class ProjectBean
         return this.description;
     }
 
+    /*
     public void setStatus(String status)
     {
         this.status = status;
@@ -50,6 +66,7 @@ public class ProjectBean
     {
         return this.status;
     }
+    */
 
     public void setDateDue(Date date)
     {
@@ -61,6 +78,7 @@ public class ProjectBean
         return this.dateDue;
     }
 
+    /*
     public void setMilestones(MilestoneBean[] milestones)
     {
         this.milestones = milestones;
@@ -70,11 +88,13 @@ public class ProjectBean
     {
         return this.milestones;
     }
+    */
 
     /**
      * Add a Milestone to Milestones.
      * @param milestone The milestone to be added.
      */
+    /*
     public void addMilestone(MilestoneBean milestone)
     {
         MilestoneBean[] newMilestones = new MilestoneBean[this.milestones.length + 1];
@@ -82,11 +102,13 @@ public class ProjectBean
         copyArray(this.milestones, newMilestones);
         this.milestones = newMilestones;
     }
+    */
 
     /**
      * Remove a milesotne from the milestones aray.
      * @param title The title of the milestone to be removed.
      */
+    /*
     public void removeMilestone(String title)
     {
         int position = findMilestoneByTitle(title);
@@ -106,15 +128,17 @@ public class ProjectBean
         }
         this.milestones = newMilestones;
     }
+    */
 
     /**
      * Calculate the progess completed on the project.
      * @return Returns the percentage of the project completed as a double.
      */
-    public double calculateProgess()
+    /*
+    public double calculateProgess(MilestoneBean[] milestones)
     {
         int count = 0;
-        for(int i = 0; i < this.milestones.length; i++)
+        for(int i = 0; i < milestones.length; i++)
         {
             if(milestones[i].getStatus().equals("complete"))
             {
@@ -123,6 +147,7 @@ public class ProjectBean
         }
         return ((count/milestones.length) * 100);
     }
+    */
 
     /**
      * Copies the source array into the destination array. Starts at the 0th elements of both arrays, will overwrite data held in the destination array.
@@ -151,21 +176,24 @@ public class ProjectBean
      * @param title The title of the milestone being searched for.
      * @return Returns, as an int, the position of the milestone.
      */
+    /*
     public int findMilestoneByTitle(String title)
     {
         for(int i = 0; i < this.milestones.length; i++)
         {
-            if(milestones[i].getTitle().equals(title))
+            if(this.milestones[i].getTitle().equals(title))
             {
                 return i;
             }
         }
         return -1;
     }
+    */
 
     /**
      * Sorts milestones by date, sooner dates are at the start of the array, later ones at the end.
      */
+    /*
     public void sortMilestonesByDate()
     {
         MilestoneBean temp;
@@ -185,6 +213,7 @@ public class ProjectBean
         }
         copyArray(sortedMilestones, this.milestones);
     }
+    */
 
     /**
      * Checks if an array is sorted by date.
