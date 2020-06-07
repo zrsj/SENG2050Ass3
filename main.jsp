@@ -14,7 +14,8 @@
 					<li class="active"><form action="ManageProjectsServlet" method="POST"><button type="submit">Manage Projects</button></form></li>
 					<li>Manage Appointments</li>
 					<li>Manage Teams</li>
-					<li>Manage Files</li>
+					<li><form action="fileupload.jsp"><button type="submit">Upload Files</button></form></li>
+					<li><form action="filedownload.jsp"><button type="submit">Download Files</button></form></li>
 				</ul>
 			</div>
 			<div class="newText">
