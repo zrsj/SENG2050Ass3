@@ -2,7 +2,8 @@
     Author: Zayne Jeffries - c3283006
     Purpose: Servlet to handle file uploads from user.
     Takes any file type, saves to a directory called "uploadDirectory" and
-    creates it if it does not exist.
+    creates it if it does not exist. Also creates archive directory if it does
+    not exist and archives a file if it has an existing entry in uploadDirectory
 */
 import java.io.*;
 import java.lang.Object;
@@ -49,7 +50,11 @@ public class UploadServ extends HttpServlet{
 
         }
     }
-
+    /*
+    Function renameAndMove takes 2 paths; the source and target destination as
+    well as the oldnm and newnm variables so that the file after renaming can be
+    successfully identified and moved to the target folder
+    */
     void renameAndMove(Path src, Path trgt, String oldnm, String newnm)
     throws IOException{
         String srcFile = src.toString() + "/" + oldnm;
@@ -57,7 +62,11 @@ public class UploadServ extends HttpServlet{
         Files.move(Paths.get(srcFile), Paths.get(srcFile).resolveSibling(newnm));
         Files.move(Paths.get(newFile), trgt.resolve(Paths.get(newFile).getFileName()));
     }
-
+    /*
+    Function httpSuccess is called when all tasks of the upload servlet are
+    successfully completed and redirects the user to the fileupload jsp after a
+    small delay
+    */
     void httpSuccess(PrintWriter o, HttpServletResponse r)
     throws IOException, InterruptedException{
         o.println("File successfully uploaded!");

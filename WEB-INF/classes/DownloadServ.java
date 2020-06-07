@@ -1,3 +1,8 @@
+/*
+    Author: Zayne Jeffries - c3283006
+    Purpose: Servlet to handle file downloading. This servlet is called when a
+    user has requested a file to download from the download directory.
+*/
 import java.io.*;
 import java.lang.Object;
 import java.nio.file.*;
@@ -17,7 +22,7 @@ public class DownloadServ extends HttpServlet{
         }
         res.setContentType("text/html");
         PrintWriter out = res.getWriter();
-        res.setContentType("APPLICATION/OCTET-STREAM");
+        res.setContentType("APPLICATION/OCTET-STREAM"); //sets up servlet for downloading
         res.setHeader("Content-Disposition", "attachment; filename=\"" + fileName + "\"");
         FileInputStream fis = new FileInputStream(filePath + fileName);
         int i;

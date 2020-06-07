@@ -1,8 +1,8 @@
 /*
     Author: Zayne Jeffries - c3283006
-    Purpose: Servlet to handle file uploads from user.
-    Takes any file type, saves to a directory called "uploadDirectory" and
-    creates it if it does not exist.
+    Purpose: Servlet to display the download directory. If the files in the
+    download directory contains an archived version, the user is notified and
+    provided with a link to the archive directory.
 */
 import java.io.*;
 import java.lang.Object;
